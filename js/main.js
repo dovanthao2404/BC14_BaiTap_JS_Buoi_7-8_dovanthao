@@ -29,26 +29,31 @@ getMyEle("btnConfirm").addEventListener("click", function () {
   checkTypeSelect();
 })
 
+var notificationFeature = getMyEle("notificationFeature");
+var resultFeature = getMyEle("resultFeature");
+var formReplace = getMyEle("formReplace");
+var formFloatArray = getMyEle("formFloatArray");
+
+
 function checkTypeSelect() {
   var valueCheck = "Chọn";
   var valueSelect = getMyEle("selectFeature").selectedIndex;
   var result = checkEntry("selectFeature", "notifiSelect", 3, valueCheck);
-  getMyEle("notificationFeature").innerHTML = '';
-  getMyEle("resultFeature").innerHTML = '';
+  notificationFeature.innerHTML = '';
+  resultFeature.innerHTML = '';
   if (result) {
     handlerValueSelect(valueSelect);
   }
 }
 
 function handlerValueSelect(value) {
-  var resultFeature = getMyEle("resultFeature");
   if (value !== 9) {
     floatArray = []
   }
   if (value === 1) {
-    getMyEle("notificationFeature").innerHTML = '';
-    getMyEle("formReplace").innerHTML = '';
-    getMyEle("formFloatArray").innerHTML = ''
+    notificationFeature.innerHTML = '';
+    formReplace.innerHTML = '';
+    formFloatArray.innerHTML = ''
     var total = totalPositiveNaumbersInArray(array);
 
     if (total !== 0) {
@@ -58,9 +63,9 @@ function handlerValueSelect(value) {
     }
 
   } else if (value === 2) {
-    getMyEle("formReplace").innerHTML = '';
-    getMyEle("notificationFeature").innerHTML = '';
-    getMyEle("formFloatArray").innerHTML = ''
+    formReplace.innerHTML = '';
+    notificationFeature.innerHTML = '';
+    formFloatArray.innerHTML = ''
     var count = countPositiveNaumberInArray(array);
 
     if (count !== 0) {
@@ -70,17 +75,17 @@ function handlerValueSelect(value) {
     }
   } else if (value === 3) {
 
-    getMyEle("formReplace").innerHTML = '';
-    getMyEle("notificationFeature").innerHTML = '';
-    getMyEle("formFloatArray").innerHTML = ''
+    formReplace.innerHTML = '';
+    notificationFeature.innerHTML = '';
+    formFloatArray.innerHTML = ''
     var minNumber = findMinNumberInArray(array);
     resultFeature.innerHTML = `Số nhỏ nhất trong mảng là: ${minNumber}.`
 
   } else if (value === 4) {
 
-    getMyEle("formReplace").innerHTML = '';
-    getMyEle("formFloatArray").innerHTML = ''
-    getMyEle("notificationFeature").innerHTML = '';
+    formReplace.innerHTML = '';
+    formFloatArray.innerHTML = ''
+    notificationFeature.innerHTML = '';
     var minPositiveNaumber = findMinPositiveNaumberInArray(array);
     if (minPositiveNaumber !== -1) {
 
@@ -91,9 +96,9 @@ function handlerValueSelect(value) {
     }
   } else if (value === 5) {
 
-    getMyEle("formReplace").innerHTML = '';
-    getMyEle("formFloatArray").innerHTML = ''
-    getMyEle("notificationFeature").innerHTML = '';
+    formReplace.innerHTML = '';
+    formFloatArray.innerHTML = ''
+    notificationFeature.innerHTML = '';
     var indexLastEvenNumber = findLastEvenNumberInArray(array);
     if (indexLastEvenNumber !== -1) {
 
@@ -104,19 +109,19 @@ function handlerValueSelect(value) {
       resultFeature.innerHTML = `Không có số chẵn nào trong mảng.`
     }
   } else if (value === 6) {
-    getMyEle("formReplace").innerHTML = '';
-    getMyEle("formFloatArray").innerHTML = ''
+    formReplace.innerHTML = '';
+    formFloatArray.innerHTML = ''
     handlerReplaceTwoElement(array);
   } else if (value === 7) {
-    getMyEle("formReplace").innerHTML = '';
-    getMyEle("formFloatArray").innerHTML = ''
+    formReplace.innerHTML = '';
+    formFloatArray.innerHTML = ''
     handlerSortUp(array);
     showCurrentArray(array, "arrayCurrent");
   } else if (value === 8) {
 
-    getMyEle("formReplace").innerHTML = '';
-    getMyEle("notificationFeature").innerHTML = '';
-    getMyEle("formFloatArray").innerHTML = ''
+    formReplace.innerHTML = '';
+    notificationFeature.innerHTML = '';
+    formFloatArray.innerHTML = ''
     var firstPrimeNumber = findFirstPrimeNumber(array);
     if (firstPrimeNumber) {
       resultFeature.innerHTML = `Số nguyên tố đầu tiên trong mảng là ${firstPrimeNumber}`
@@ -124,15 +129,15 @@ function handlerValueSelect(value) {
       resultFeature.innerHTML = `Không có số nguyên tố trong mảng.`
     }
   } else if (value === 9) {
-    getMyEle("formReplace").innerHTML = '';
-    getMyEle("notificationFeature").innerHTML = '';
+    formReplace.innerHTML = '';
+    notificationFeature.innerHTML = '';
     showFormFloatArray();
     handlerFloatArray();
   } else {
 
-    getMyEle("formReplace").innerHTML = '';
-    getMyEle("notificationFeature").innerHTML = '';
-    getMyEle("formFloatArray").innerHTML = ''
+    formReplace.innerHTML = '';
+    notificationFeature.innerHTML = '';
+    formFloatArray.innerHTML = ''
     handlerCompareNegativeAndPositive(array);
 
   }
@@ -153,19 +158,22 @@ function handlerFloatArray() {
     }
   })
   getMyEle("removeFloatArray").addEventListener("click", function () {
+    var floatArrayCurrent = getMyEle("floatArrayCurrent");
+    var resultCountInteger = getMyEle("resultCountInteger");
     floatArray = [];
-    getMyEle("floatArrayCurrent").innerHTML = '';
-    getMyEle("resultCountInteger").innerHTML = '';
+    floatArrayCurrent.innerHTML = '';
+    resultCountInteger.innerHTML = '';
   })
 }
 
 // Xử lý hiển thị số nguyên trong mang số thực
 function handlerShowIntegerNumberInFloatArray(a) {
   var count = countIntegerNumberInFLoatArray(a);
+  var resultCountInteger = getMyEle("resultCountInteger");
   if (count !== 0) {
-    getMyEle("resultCountInteger").innerHTML = `Có ${count} số nguyên trong mảng số thực`
+    resultCountInteger.innerHTML = `Có ${count} số nguyên trong mảng số thực`
   } else {
-    getMyEle("resultCountInteger").innerHTML = `Không có số nguyên trong mảng.`
+    resultCountInteger.innerHTML = `Không có số nguyên trong mảng.`
   }
 }
 
@@ -184,7 +192,7 @@ function handlerCompareNegativeAndPositive(a) {
 }
 
 function showCompare(a, countNegative, countPositive) {
-  var resultCompare = getMyEle("resultFeature");
+  var resultCompare = resultFeature;
   resultCompare.innerHTML = '';
   if (countNegative === 0 && countPositive === 0 && a.length > 0) {
     resultCompare.innerHTML = "Trong mảng toàn số 0";
@@ -220,7 +228,7 @@ function checkValidFloatArray() {
 
 // Hiển thị form nhập mảng số thực
 function showFormFloatArray() {
-  getMyEle("formFloatArray").innerHTML = `<div class="form-group">
+  formFloatArray.innerHTML = `<div class="form-group">
   <label for="elementOfFloatArray">Nhập phần tử của mảng số thực</label>
   <input id="elementOfFloatArray" type="text" class="form-control" placeholder="Phần tử của mảng">
   <span id="notificationFloatElement" class="text-danger"></span>
@@ -281,7 +289,7 @@ function handlerReplaceTwoElement(a) {
       }
     })
   } else {
-    getMyEle("notificationFeature").innerHTML = notifications[7];
+    notificationFeature.innerHTML = notifications[7];
   }
 }
 
@@ -296,16 +304,27 @@ function replaceTwoElement(a) {
 function checkValidInputReplace(a) {
   var firstIndex = +getMyEle("firstIndexReplace").value;
   var lastIndex = +getMyEle("lastIndexReplace").value;
-
   var result1 =
-    checkEntry("firstIndexReplace", "notiFirstIndexReplace", 4) && checkIsNumber("firstIndexReplace", "notiFirstIndexReplace", 1) && checkIsNumber("firstIndexReplace", "notiFirstIndexReplace", 2)
+    checkEntry("firstIndexReplace", "notiFirstIndexReplace", 4) &&
+    checkIsNumber("firstIndexReplace", "notiFirstIndexReplace", 1) &&
+    checkIsInteger("firstIndexReplace", "notiFirstIndexReplace", 2)
     && checkIndexReplace("notiFirstIndexReplace", 6, firstIndex, a);
 
 
   var result2 =
-    checkEntry("lastIndexReplace", "notiLastIndexReplace", 5) && checkIsNumber("lastIndexReplace", "notiLastIndexReplace", 1) && checkIsNumber("lastIndexReplace", "notiLastIndexReplace", 2) && checkIndexReplace("notiLastIndexReplace", 6, lastIndex, a);
+    checkEntry("lastIndexReplace", "notiLastIndexReplace", 5) &&
+    checkIsNumber("lastIndexReplace", "notiLastIndexReplace", 1) &&
+    checkIsInteger("lastIndexReplace", "notiLastIndexReplace", 2) &&
+    checkIndexReplace("notiLastIndexReplace", 6, lastIndex, a);
+  if (result2) {
+    if (firstIndex === lastIndex) {
+      getMyEle("notiLastIndexReplace").innerHTML = "Vui lòng nhập khác giá trị với vị trí đầu!";
+      result2 = false;
+    }
+  }
 
   return (result1 && result2) ? true : false;
+
 }
 
 // Kiểm tra vị trí người nhập có hợp lệ hay không
@@ -321,7 +340,7 @@ function checkIndexReplace(idNoti, indexNoti, index, a) {
 
 // Hiển thì form nhập giá trị thay đổi.
 function showFormReplace() {
-  getMyEle("formReplace").innerHTML = `<div class="form-group">
+  formReplace.innerHTML = `<div class="form-group">
   <label for="firstIndexReplace">Nhập vị trí đầu tiên</label>
   <input id="firstIndexReplace" type="text" class="form-control" placeholder="Vị trí đầu tiên">
   <span id="notiFirstIndexReplace" class="text-danger"></span>
@@ -423,10 +442,10 @@ function totalPositiveNaumbersInArray(a) {
 function handlerAddElementToArray() {
   var result = checkValidInputElement();
   if (result) {
-    var ele = +getMyEle("elementOfArray").value;
-    addElementToArray(array, ele)
+    var ele = getMyEle("elementOfArray");
+    addElementToArray(array, +ele.value)
     showCurrentArray(array, "arrayCurrent");
-    getMyEle("elementOfArray").value = '';
+    ele.value = '';
     showFeature();
   }
 }
@@ -434,14 +453,14 @@ function handlerAddElementToArray() {
 // Xử lý xóa mảng float
 function handlerRemoveArray() {
   floatArray = [];
-  getMyEle("floatArrayCurrent").innerHTML = "";
+  floatArrayCurrent.innerHTML = "";
 }
 
 // Xử lý xóa mảng
 function handlerRemoveArray() {
   array = [];
   getMyEle("arrayCurrent").innerHTML = "";
-  getMyEle("resultFeature").innerHTML = '';
+  resultFeature.innerHTML = '';
   showFeature();
 }
 
