@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-sasUA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="store-array">
+      <div class="row">
+        <div class="col-6 mx-auto">
+
+          <h2 class="text-center">Bài tập lưu trữ mảng.</h2>
+
+          <div class="form-group">
+            <label for="elementOfArray">Nhập phần tử của mảng</label>
+            <input id="elementOfArray" type="text" class="form-control" placeholder="Phần tử của mảng">
+            <span id="notificationElement" class="text-danger"></span>
+          </div>
+
+          <button id="btnAddElement" class="btn btn-primary">Thêm phần tử</button>
+          <button id="removeArray" class="btn btn-dark">Xóa mảng</button>
+
+          <div class="array-current">
+            <h3 id="arrayCurrent" class="my-3"></h3>
+          </div>
+          <div id="feature">
+            <div class="select-feature form-group">
+
+              <label for="selectFeature">Chọn chức năng</label>
+              <select id="selectFeature" class="form-control">
+                <option selected>Chọn</option>
+                <option>Tổng các số dương trong mảng</option>
+                <option>Đếm các số dương trong mảng</option>
+                <option>Tìm số nhỏ nhất trong mảng</option>
+                <option>Tìm số dương nhỏ nhất trong mảng</option>
+                <option>Tìm số chẵn cuối cùng trong mảng</option>
+                <option>Đổi chổ 2 giá trị trong mảng theo vị trí</option>
+                <option>Sắp xếp mảng theo thứ tự tăng dần</option>
+                <option>Tìm số nguyên tố đầu tiên trong mảng</option>
+                <option>Nhập thêm 1 mảng số thực.</option>
+                <option>So sánh số lượng số dương và số âm trong mảng</option>
+              </select>
+              <span id="notifiSelect" class="text-danger"></span>
+
+            </div>
+
+            <button id="btnConfirm" class="btn btn-primary">Xác nhận</button>
+
+            <div class="notification-feature">
+              <h3 id="notificationFeature" class="my-3 text-danger"></h3>
+            </div>
+
+            <div class="result-feature">
+              <h3 id="resultFeature" class="my-3"></h3>
+            </div>
+            <div id="formReplace">
+            </div>
+            <div id="formFloatArray">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
