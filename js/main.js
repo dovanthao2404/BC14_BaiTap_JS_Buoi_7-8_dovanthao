@@ -116,7 +116,6 @@ function handlerValueSelect(value) {
     formReplace.innerHTML = '';
     formFloatArray.innerHTML = ''
     handlerSortUp(array);
-    showCurrentArray(array, "arrayCurrent");
   } else if (value === 8) {
 
     formReplace.innerHTML = '';
@@ -151,7 +150,7 @@ function handlerFloatArray() {
       var ele = +getMyEle("elementOfFloatArray").value;
       addElementToArray(floatArray, ele);
       getMyEle('elementOfFloatArray').value = '';
-      showCurrentArray(floatArray, "floatArrayCurrent")
+      showArray(floatArray, "floatArrayCurrent")
       handlerShowIntegerNumberInFloatArray(floatArray)
     } else {
 
@@ -266,7 +265,10 @@ function isPrime(n) {
 
 // Xử lý sắp xếp tăng dần
 function handlerSortUp(a) {
-  sortUp(a);
+  var tempArray = a.slice();
+  sortUp(tempArray);
+  var prefix = "Mảng sau khi sắp xếp là: ";
+  showArray(tempArray, "resultFeature", prefix);
 }
 
 // Sắp xếp tăng dần
@@ -278,14 +280,16 @@ function sortUp(a) {
 
 // Xử lý thay đổi 2 phần tử bằng vị trí
 function handlerReplaceTwoElement(a) {
+  var tempArray = a.slice();
   if (a.length >= 2) {
     showFormReplace();
     getMyEle("btnReplace").addEventListener("click", function () {
 
-      var resultCheck = checkValidInputReplace(a);
+      var resultCheck = checkValidInputReplace(tempArray);
       if (resultCheck) {
-        replaceTwoElement(a);
-        showCurrentArray(a, "arrayCurrent");
+        replaceTwoElement(tempArray);
+        var prefix = "Mảng sau khi thay đổi là: ";
+        showArray(tempArray, "resultReplace", prefix);
       }
     })
   } else {
@@ -350,7 +354,10 @@ function showFormReplace() {
   <input id="lastIndexReplace" type="text" class="form-control" placeholder="Vị trí thứ hai">
   <span id="notiLastIndexReplace" class="text-danger"></span>
 </div>
-<button id="btnReplace" class="btn btn-primary">Thay đổi</button>`;
+<button id="btnReplace" class="btn btn-primary">Thay đổi</button>
+<div class="result-feature">
+              <h3 id="resultReplace" class="my-3"></h3>
+            </div>`;
 }
 
 // Tìm số chẵn cuối cùng trong mảng
@@ -444,7 +451,7 @@ function handlerAddElementToArray() {
   if (result) {
     var ele = getMyEle("elementOfArray");
     addElementToArray(array, +ele.value)
-    showCurrentArray(array, "arrayCurrent");
+    showArray(array, "arrayCurrent");
     ele.value = '';
     showFeature();
   }
@@ -476,12 +483,12 @@ function showFeature() {
 showFeature();
 
 // Show mảng hiện tại
-function showCurrentArray(a, id) {
+function showArray(a, id, prefix = "Mảng hiện tại:") {
   var htmls = '';
   for (var i = 0; i < a.length; i++) {
     htmls += a[i] + "\t";
   }
-  getMyEle(id).innerHTML = `Mảng hiện tại: ${htmls}`;
+  getMyEle(id).innerHTML = `${prefix} ${htmls}`;
 }
 
 // Thêm Phần Tử Cho mảng
