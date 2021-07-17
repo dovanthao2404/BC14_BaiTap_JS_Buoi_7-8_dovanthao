@@ -156,7 +156,7 @@ function handlerFloatArray() {
 
     }
   })
-  getMyEle("removeFloatArray").addEventListener("click", function () {
+  getMyEle("btnRemoveFloatArray").addEventListener("click", function () {
     var floatArrayCurrent = getMyEle("floatArrayCurrent");
     var resultCountInteger = getMyEle("resultCountInteger");
     floatArray = [];
@@ -234,7 +234,7 @@ function showFormFloatArray() {
 </div>
 
 <button id="btnAddFloatElement" class="btn btn-primary">Thêm phần tử</button>
-<button id="removeFloatArray" class="btn btn-dark">Xóa mảng</button>
+<button id="btnRemoveFloatArray" class="btn btn-dark">Xóa mảng</button>
 
 <div class="array-current">
   <h3 id="floatArrayCurrent" class="my-3"></h3>
